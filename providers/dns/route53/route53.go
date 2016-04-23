@@ -124,6 +124,12 @@ func (r *DNSProvider) changeRecord(action, fqdn, value string, ttl int) error {
 }
 
 func (r *DNSProvider) getHostedZoneID(fqdn string) (string, error) {
+
+	hostedId := os.Getenv("AWS_ROUTE53_HOSTEDZONE_ID")
+	if hostedId != nil {
+		return hostedId, nil
+	}
+
 	authZone, err := acme.FindZoneByFqdn(fqdn, acme.RecursiveNameservers)
 	if err != nil {
 		return "", err
