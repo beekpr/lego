@@ -3,6 +3,7 @@
 package route53
 
 import (
+	"os"
 	"fmt"
 	"math/rand"
 	"strings"
