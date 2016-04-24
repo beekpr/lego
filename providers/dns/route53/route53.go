@@ -109,7 +109,7 @@ func (r *DNSProvider) changeRecord(action, fqdn, value string, ttl int) error {
 
 	statusID := resp.ChangeInfo.Id
 
-	return acme.WaitFor(120*time.Second, 4*time.Second, func() (bool, error) {
+	return acme.WaitFor(15*60*time.Second, 10*time.Second, func() (bool, error) {
 		reqParams := &route53.GetChangeInput{
 			Id: statusID,
 		}
