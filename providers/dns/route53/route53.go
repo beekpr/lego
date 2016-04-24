@@ -127,7 +127,7 @@ func (r *DNSProvider) changeRecord(action, fqdn, value string, ttl int) error {
 func (r *DNSProvider) getHostedZoneID(fqdn string) (string, error) {
 
 	hostedId := os.Getenv("AWS_ROUTE53_HOSTEDZONE_ID")
-	if hostedId != nil {
+	if len(hostedId) > 0 {
 		return hostedId, nil
 	}
 
